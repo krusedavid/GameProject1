@@ -7,6 +7,7 @@ public class CharacterController : MonoBehaviour
 {
     [SerializeField] private float speed = 2f;
     [SerializeField] private Rigidbody characterBody;
+    [SerializeField] private float jumpForce = 100;
 
     void Update()
     {
@@ -23,15 +24,12 @@ public class CharacterController : MonoBehaviour
 
         }
 
-       if (Input.GetKeyDown(KeyCode.Space) && characterBody.velocity.y <= 0.05f)
+       if (Input.GetKeyDown(KeyCode.Space))
         {
-            Jump();
+            characterBody.AddForce(Vector3.up * jumpForce);
         }
     }
 
-    private void Jump()
-    {
-        characterBody.AddForce(Vector3.up * 500f);
-    }
+   
 
 }
