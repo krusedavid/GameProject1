@@ -26,21 +26,24 @@ public class CharacterController : MonoBehaviour
 
         }
 
-       if (Input.GetKeyDown(KeyCode.Space))
+       if (Input.GetKeyDown(KeyCode.Space) && IsTouchingFloor())
         {
             /* Is a bool needed for saying when the character can jump?
              * I don't want the character to jump when it is jumping*/
-            characterBody.AddForce(Vector3.up * jumpForce);
+            Jump();
         }
 
-      
 
     }
 
+    private void Jump()
+    {
+        characterBody.AddForce(Vector3.up * jumpForce);
+    }
     private bool IsTouchingFloor()
     {
         RaycastHit hit;
-        return Physics.SphereCast(transform.position, 0.15f, -transform.up, out hit, 1f);
-
+        bool result = Physics.SphereCast(transform.position, 0.15f, -transform.up, out hit, 1f);
+        return result;
     }
 }
