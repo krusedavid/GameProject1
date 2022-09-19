@@ -4,21 +4,21 @@ using UnityEngine;
 
 public class PlayerRaycast : MonoBehaviour
 {
-    private RaycastHit result;
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             RaycastHit result;
-            bool thereWasHit = Physics.Raycast(transform.position, transform.forward, out result, Mathf.Infinity);
-            
-            //Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            //if (Physics.Raycast(ray, out result, 100.0f))
-            
-                //Make the ray visible
-            Debug.DrawRay(transform.position, transform.forward * 50f, Color.red, 0.05f);
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            bool thereWasHit = Physics.Raycast(ray, out result, 100.0f);
 
+
+
+            //Make the ray visible - the debug tool doesn't work unless it has parameters which can't be provided by the current Raycast
+            //Debug.DrawRay(transform.position, transform.forward * 50f, Color.red, 0.05f);
+
+            
             if (thereWasHit)
             {
 
