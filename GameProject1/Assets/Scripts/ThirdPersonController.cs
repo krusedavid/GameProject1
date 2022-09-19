@@ -16,21 +16,34 @@ public class ThirdPersonController : MonoBehaviour
 
     private void Start()
     {
-        
+        {
+            Cursor.visible = false;
+        }
     }
 
-    private void Update()
+    void Update()
     {
-        if (Input.GetAxis("Horizontal")!=0)
+        if (Input.GetAxis("Horizontal") != 0)
         {
             transform.Translate(transform.right * walkingSpeed * Time.deltaTime * Input.GetAxis("Horizontal"), Space.World);
         }
 
-        if (Input.GetAxis("Vertical") !=0)
+        if (Input.GetAxis("Vertical") != 0)
         {
             transform.Translate(transform.forward * walkingSpeed * Time.deltaTime * Input.GetAxis("Vertical"), Space.World);
         }
 
-        
+        ReadRotationInput();
+    }
+
+    private void ReadRotationInput()
+    {
+        yaw += speedH * Input.GetAxis("Mouse X");
+        pitch -= speedV * Input.GetAxis("Mouse Y");
+        pitch = Mathf.Clamp(pitch, -pitchClamp, pitchClamp);
+
+
+        characterCamera.transform.localEulerAngles = new Vector3(pitch, 0.0f, 0.0f);
+        transform.eulerAngles = new Vector3(0.0f, yaw, 0.0f);
     }
 }

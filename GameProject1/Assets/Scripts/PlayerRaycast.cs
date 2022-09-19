@@ -8,12 +8,15 @@ public class PlayerRaycast : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.LeftControl))
+        if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             RaycastHit result;
             bool thereWasHit = Physics.Raycast(transform.position, transform.forward, out result, Mathf.Infinity);
-
-            //Make the ray visible
+            
+            //Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            //if (Physics.Raycast(ray, out result, 100.0f))
+            
+                //Make the ray visible
             Debug.DrawRay(transform.position, transform.forward * 50f, Color.red, 0.05f);
 
             if (thereWasHit)
