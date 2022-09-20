@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerRaycast : MonoBehaviour
 {
-
+    [SerializeField] LineRenderer lineRenderer;
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Mouse0))
@@ -14,7 +14,10 @@ public class PlayerRaycast : MonoBehaviour
             bool thereWasHit = Physics.Raycast(ray, out result, 100.0f);
 
 
-
+            Vector3 start = transform.position;
+            Vector3 end = transform.forward * 50f;
+            lineRenderer.SetPosition(0, start);
+            lineRenderer.SetPosition(1, end);
             //Make the ray visible - the debug tool doesn't work unless it has parameters which can't be provided by the current Raycast
             //Debug.DrawRay(transform.position, transform.forward * 50f, Color.red, 0.05f);
 
