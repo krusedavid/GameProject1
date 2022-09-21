@@ -11,7 +11,7 @@ public class ThirdPersonController : MonoBehaviour
     [SerializeField] private Rigidbody characterBody;
     [SerializeField] private float jumpForce = 100;
     [SerializeField] private int playerIndex;
-
+    [SerializeField] private PlayerTurn playerTurn;
     private float yaw = 0.0f;
     private float pitch = 0.0f;
 
@@ -26,7 +26,7 @@ public class ThirdPersonController : MonoBehaviour
 
     void Update()
     {
-        if (TurnManager.GetInstance().IsItPlayerTurn(playerIndex))
+        if (playerTurn.IsPlayerTurn())
         {
             if (Input.GetAxis("Horizontal") != 0)
             {

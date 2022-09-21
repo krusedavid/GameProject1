@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerRaycast : MonoBehaviour
@@ -14,18 +15,19 @@ public class PlayerRaycast : MonoBehaviour
             bool thereWasHit = Physics.Raycast(ray, out result, 100.0f);
 
 
-            Vector3 start = transform.position;
-            Vector3 end = transform.forward * 50f;
-            lineRenderer.SetPosition(0, start);
-            lineRenderer.SetPosition(1, end);
+            //Vector3 start = transform.position;
+            //Vector3 end = transform.forward * 50f;
+            //lineRenderer.SetPosition(0, start);
+            //lineRenderer.SetPosition(1, end);
             //Make the ray visible - the debug tool doesn't work unless it has parameters which can't be provided by the current Raycast
             //Debug.DrawRay(transform.position, transform.forward * 50f, Color.red, 0.05f);
 
             
             if (thereWasHit)
             {
-
-                result.collider.gameObject.GetComponent<MeshRenderer>().material.color = GetRandomColor();
+               
+               
+                //result.collider.gameObject.GetComponent<MeshRenderer>().material.color = GetRandomColor();
             }
         }
     }
