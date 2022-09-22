@@ -6,8 +6,12 @@ using UnityEngine;
 public class PlayerRaycast : MonoBehaviour
 {
     [SerializeField] LineRenderer lineRenderer;
+    [SerializeField] private ActivePlayerManager manager;
+    [SerializeField] 
     private void Update()
     {
+        
+        
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             RaycastHit result;
@@ -35,6 +39,7 @@ public class PlayerRaycast : MonoBehaviour
             }
         }
     }
+    
        
     private Color GetRandomColor()
 

@@ -26,7 +26,7 @@ public class ThirdPersonController : MonoBehaviour
 
     void Update()
     {
-        if (playerTurn.IsPlayerTurn())
+        
         {
             if (Input.GetAxis("Horizontal") != 0)
             {
