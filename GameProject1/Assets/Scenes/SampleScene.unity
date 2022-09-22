@@ -888,6 +888,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed9a2207633e8dc4ea9f6c62057bc7f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1116560852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1116560834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f01764baaf3a3f246860de4d7e234853, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 3
+  currentHealth: 0
 --- !u!1 &1390686880
 GameObject:
   m_ObjectHideFlags: 0
@@ -972,7 +986,7 @@ GameObject:
   - component: {fileID: 1408286487}
   m_Layer: 0
   m_Name: TakeDamageCube
-  m_TagString: Untagged
+  m_TagString: player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1680,6 +1694,10 @@ PrefabInstance:
     - target: {fileID: 8107008984659094726, guid: 379ada2776b90b9468accde6ae416bd6, type: 3}
       propertyPath: lineRenderer
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8107008984659094727, guid: 379ada2776b90b9468accde6ae416bd6, type: 3}
+      propertyPath: pitchClamp
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 8107008984659094727, guid: 379ada2776b90b9468accde6ae416bd6, type: 3}
       propertyPath: playerTurn
