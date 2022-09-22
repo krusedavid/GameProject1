@@ -54,6 +54,7 @@ public class ThirdPersonController : MonoBehaviour
 
         characterCamera.transform.localEulerAngles = new Vector3(pitch, 0.0f, 0.0f);
         transform.eulerAngles = new Vector3(0.0f, yaw, 0.0f);
+        Cursor.lockState = CursorLockMode.Confined;
     }
     private void Jump()
     {

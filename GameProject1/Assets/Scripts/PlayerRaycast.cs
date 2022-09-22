@@ -27,7 +27,7 @@ public class PlayerRaycast : MonoBehaviour
             {
                
                
-                //result.collider.gameObject.GetComponent<MeshRenderer>().material.color = GetRandomColor();
+                result.collider.gameObject.GetComponent<MeshRenderer>().material.color = GetRandomColor();
             }
         }
     }
