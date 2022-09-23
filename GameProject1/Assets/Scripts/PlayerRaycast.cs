@@ -7,16 +7,15 @@ public class PlayerRaycast : MonoBehaviour
 {
     [SerializeField] LineRenderer lineRenderer;
     [SerializeField] private ActivePlayerManager manager;
-    [SerializeField] 
-    private void Update()
+
+
+
+
+    public void Shoot()
     {
-        
-        
-        if (Input.GetKeyDown(KeyCode.Mouse0))
-        {
-            RaycastHit result;
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            bool thereWasHit = Physics.Raycast(ray, out result, 100.0f);
+        RaycastHit result;
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition); 
+        bool thereWasHit = Physics.Raycast(ray, out result, 100.0f);
 
 
             //Vector3 start = transform.position;
@@ -26,7 +25,7 @@ public class PlayerRaycast : MonoBehaviour
             //Make the ray visible - the debug tool doesn't work unless it has parameters which can't be provided by the current Raycast
             //Debug.DrawRay(transform.position, transform.forward * 50f, Color.red, 0.05f);
 
-            
+            //Check if the player hits another player
             if (thereWasHit)
             {
 
@@ -37,7 +36,8 @@ public class PlayerRaycast : MonoBehaviour
                 //result.collider.gameObject.GetComponent<MeshRenderer>().material.color = GetRandomColor();
               
             }
-        }
+            
+            manager.ChangeTurn();
     }
     
        

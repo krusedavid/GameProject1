@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class Health : MonoBehaviour
@@ -20,6 +21,7 @@ public class Health : MonoBehaviour
 
         if (currentHealth <= 0)
         {
+            //gameObject.SetActive(false);
             Destroy(gameObject);
         }
     }

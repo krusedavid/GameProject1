@@ -28,6 +28,7 @@ public class ActivePlayerManager : MonoBehaviour
         }
         else if (player2 == currentPlayer)
         {
+            Debug.LogError("Changing from player2 to 1");
             currentPlayer = player1;
         }
     }

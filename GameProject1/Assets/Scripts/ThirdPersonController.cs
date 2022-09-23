@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.IO.LowLevel.Unsafe;
 using UnityEngine;
 
 public class ThirdPersonController : MonoBehaviour
@@ -10,10 +11,12 @@ public class ThirdPersonController : MonoBehaviour
     [SerializeField] private float walkingSpeed = 2f;
     [SerializeField] private Rigidbody characterBody;
     [SerializeField] private float jumpForce = 100;
-    [SerializeField] private int playerIndex;
-    [SerializeField] private PlayerTurn playerTurn;
     private float yaw = 0.0f;
     private float pitch = 0.0f;
+    [SerializeField] private ActivePlayerManager manager;
+    [SerializeField] private ActivePlayer myPlayer;
+    [SerializeField] private PlayerRaycast raycast;
+
 
     [SerializeField] private float pitchClamp = 90;
 
@@ -26,23 +29,31 @@ public class ThirdPersonController : MonoBehaviour
 
     void Update()
     {
-        
+        if(manager.GetCurrentPlayer() == myPlayer)
         {
+            Debug.LogError(myPlayer.name);
             if (Input.GetAxis("Horizontal") != 0)
             {
-                transform.Translate(transform.right * walkingSpeed * Time.deltaTime * Input.GetAxis("Horizontal"), Space.World);
+                transform.Translate(transform.right * (walkingSpeed * Time.deltaTime * Input.GetAxis("Horizontal")), Space.World);
             }
 
             if (Input.GetAxis("Vertical") != 0)
             {
-                transform.Translate(transform.forward * walkingSpeed * Time.deltaTime * Input.GetAxis("Vertical"), Space.World);
+                transform.Translate(transform.forward * (walkingSpeed * Time.deltaTime * Input.GetAxis("Vertical")), Space.World);
             }
             if (Input.GetKeyDown(KeyCode.Space) && IsTouchingFloor())
             {
-
                 Jump();
             }
             ReadRotationInput();
+
+            if (Input.GetKeyDown(KeyCode.Mouse0))
+            {
+                Debug.LogError("Do i shoot?");
+                Debug.LogError(this.name);
+                raycast.Shoot();
+            }
+            
         }
     }
     private void ReadRotationInput()
@@ -66,4 +77,5 @@ public class ThirdPersonController : MonoBehaviour
         bool result = Physics.SphereCast(transform.position, 0.15f, -transform.up, out hit, 1f);
         return result;
     }
+
 }

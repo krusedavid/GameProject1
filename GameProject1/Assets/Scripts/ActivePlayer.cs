@@ -8,18 +8,7 @@ public class ActivePlayer : MonoBehaviour
 
    public void AssignManager(ActivePlayerManager theManager)
    {
-      manager = theManager;
+       manager = theManager;
    }
 
-   public FireWeapon()
-   {
-      GiveDamage();
-      manager.ChangeTurn();
-   }
-
-   public void GiveDamage()
-   {
-      GetComponent<Health>().TakeDamage(1);
-   }
-   
 }
