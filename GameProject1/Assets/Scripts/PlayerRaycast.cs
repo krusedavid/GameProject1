@@ -6,7 +6,7 @@ using UnityEngine;
 public class PlayerRaycast : MonoBehaviour
 {
     [SerializeField] LineRenderer lineRenderer;
-    [SerializeField] private ActivePlayerManager manager;
+  
 
 
 
@@ -15,10 +15,9 @@ public class PlayerRaycast : MonoBehaviour
     {
         RaycastHit result;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition); 
-        bool thereWasHit = Physics.Raycast(ray, out result, 100.0f);
-
-
-            //Vector3 start = transform.position;
+        bool thereWasHit = Physics.Raycast(ray, out result);
+        
+        //Vector3 start = transform.position;
             //Vector3 end = transform.forward * 50f;
             //lineRenderer.SetPosition(0, start);
             //lineRenderer.SetPosition(1, end);
@@ -26,9 +25,10 @@ public class PlayerRaycast : MonoBehaviour
             //Debug.DrawRay(transform.position, transform.forward * 50f, Color.red, 0.05f);
 
             //Check if the player hits another player
+            // The Raycast needs one camera for being able to be accurate. 
+            // I had two cameras and the Raycast didnt know which camera to point through.
             if (thereWasHit)
             {
-
                 if (result.collider.gameObject.CompareTag("player"))
                 {
                     result.collider.gameObject.GetComponent<Health>().TakeDamage(1);
@@ -37,7 +37,7 @@ public class PlayerRaycast : MonoBehaviour
               
             }
             
-            manager.ChangeTurn();
+           
     }
     
        

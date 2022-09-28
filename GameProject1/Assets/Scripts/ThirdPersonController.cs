@@ -13,12 +13,9 @@ public class ThirdPersonController : MonoBehaviour
     [SerializeField] private float jumpForce = 100;
     private float yaw = 0.0f;
     private float pitch = 0.0f;
-    [SerializeField] private ActivePlayerManager manager;
-    [SerializeField] private ActivePlayer myPlayer;
-    [SerializeField] private PlayerRaycast raycast;
-
-
     [SerializeField] private float pitchClamp = 90;
+    [SerializeField] public int playerIndex;
+    
 
     private void Start()
     {
@@ -29,9 +26,8 @@ public class ThirdPersonController : MonoBehaviour
 
     void Update()
     {
-        if(manager.GetCurrentPlayer() == myPlayer)
+        if (TurnManager.GetInstance().IsItPlayerTurn(playerIndex))
         {
-            Debug.LogError(myPlayer.name);
             if (Input.GetAxis("Horizontal") != 0)
             {
                 transform.Translate(transform.right * (walkingSpeed * Time.deltaTime * Input.GetAxis("Horizontal")), Space.World);
@@ -49,12 +45,16 @@ public class ThirdPersonController : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {
-                Debug.LogError("Do i shoot?");
-                Debug.LogError(this.name);
-                raycast.Shoot();
+                Debug.LogError("Shooting?");
+                GetComponent<PlayerRaycast>().Shoot();
+                StartCoroutine(BetweenTurnDelay(2f));
+                
+               
             }
-            
+
         }
+            
+        
     }
     private void ReadRotationInput()
     {
@@ -76,6 +76,14 @@ public class ThirdPersonController : MonoBehaviour
         RaycastHit hit;
         bool result = Physics.SphereCast(transform.position, 0.15f, -transform.up, out hit, 1f);
         return result;
+    }
+    
+    //Coroutine - Delay
+    IEnumerator BetweenTurnDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        TurnManager.GetInstance().ChangeTurn();
+        
     }
 
 }
