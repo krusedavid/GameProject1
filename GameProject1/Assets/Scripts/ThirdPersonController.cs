@@ -19,17 +19,20 @@ public class ThirdPersonController : MonoBehaviour
 
     private void Start()
     {
-        {
+        
             Cursor.visible = false;
-        }
+            Cursor.lockState = CursorLockMode.Locked;
+        
     }
 
     void Update()
     {
         if (TurnManager.GetInstance().IsItPlayerTurn(playerIndex))
         {
+            
             if (Input.GetAxis("Horizontal") != 0)
             {
+                
                 transform.Translate(transform.right * (walkingSpeed * Time.deltaTime * Input.GetAxis("Horizontal")), Space.World);
             }
 
@@ -65,7 +68,7 @@ public class ThirdPersonController : MonoBehaviour
 
         characterCamera.transform.localEulerAngles = new Vector3(pitch, 0.0f, 0.0f);
         transform.eulerAngles = new Vector3(0.0f, yaw, 0.0f);
-        Cursor.lockState = CursorLockMode.Confined;
+        
     }
     private void Jump()
     {

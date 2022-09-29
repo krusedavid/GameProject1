@@ -2,12 +2,14 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TurnManager : MonoBehaviour
 {
 
     private static TurnManager instance;
-    private int currentPlayerIndex;
+    public int currentPlayerIndex;
+    public GameObject[] players;
 
 
     private void Awake()
@@ -17,6 +19,7 @@ public class TurnManager : MonoBehaviour
             instance = this;
             currentPlayerIndex = 1;
         }
+        Camera.main.GetComponent<FollowCamera>().targetPlayer(players[0].transform);
     }
 
     public bool IsItPlayerTurn(int index)
@@ -39,6 +42,12 @@ public class TurnManager : MonoBehaviour
         {
             currentPlayerIndex = 1;
         }
+
+        if (players[currentPlayerIndex - 1].GetComponent<Health>().isAlive == false)
+        {
+            SceneManager.LoadScene("Level1");
+        }
+        Camera.main.GetComponent<FollowCamera>().targetPlayer(players[currentPlayerIndex -1].transform);
     }
 
     private void Update()

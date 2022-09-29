@@ -29,6 +29,7 @@ public class PlayerRaycast : MonoBehaviour
             // I had two cameras and the Raycast didnt know which camera to point through.
             if (thereWasHit)
             {
+                Debug.Log(result.transform.name);
                 if (result.collider.gameObject.CompareTag("player"))
                 {
                     result.collider.gameObject.GetComponent<Health>().TakeDamage(1);
