@@ -15,7 +15,7 @@ public class ThirdPersonController : MonoBehaviour
     private float pitch = 0.0f;
     [SerializeField] private float pitchClamp = 90;
     [SerializeField] public int playerIndex;
-    
+    private bool hasShot = false;
 
     private void Start()
     {
@@ -48,6 +48,8 @@ public class ThirdPersonController : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {
+                if(hasShot) return;
+                hasShot = true;
                 Debug.LogError("Shooting?");
                 GetComponent<PlayerRaycast>().Shoot();
                 StartCoroutine(BetweenTurnDelay(2f));
@@ -86,7 +88,7 @@ public class ThirdPersonController : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
         TurnManager.GetInstance().ChangeTurn();
-        
+        hasShot = false;
     }
 
 }

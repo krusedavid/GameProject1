@@ -6,6 +6,7 @@ using UnityEngine;
 public class PlayerRaycast : MonoBehaviour
 {
     [SerializeField] LineRenderer lineRenderer;
+    
   
 
 
@@ -13,6 +14,7 @@ public class PlayerRaycast : MonoBehaviour
 
     public void Shoot()
     {
+        
         RaycastHit result;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition); 
         bool thereWasHit = Physics.Raycast(ray, out result);

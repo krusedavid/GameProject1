@@ -34,6 +34,7 @@ public class TurnManager : MonoBehaviour
 
     public void ChangeTurn()
     {
+        
         if (currentPlayerIndex == 1)
         {
             currentPlayerIndex = 2;
@@ -43,6 +44,7 @@ public class TurnManager : MonoBehaviour
             currentPlayerIndex = 1;
         }
 
+        
         if (players[currentPlayerIndex - 1].GetComponent<Health>().isAlive == false)
         {
             SceneManager.LoadScene("Level1");

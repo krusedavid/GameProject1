@@ -8,7 +8,8 @@
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerRaycast.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PlayerRaycast.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/ThirdPersonController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ThirdPersonController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/TurnManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/TurnManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,7 +88,8 @@
       <workItem from="1664202365710" duration="17000" />
       <workItem from="1664351684462" duration="3962000" />
       <workItem from="1664355727849" duration="10725000" />
-      <workItem from="1664453355599" duration="5911000" />
+      <workItem from="1664453355599" duration="5945000" />
+      <workItem from="1664535065623" duration="3485000" />
     </task>
     <servers />
   </component>

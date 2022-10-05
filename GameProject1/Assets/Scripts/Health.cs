@@ -8,6 +8,7 @@ public class Health : MonoBehaviour
     public int maxHealth = 3;
     public int currentHealth;
     public bool isAlive = true;
+    [SerializeField] private Healthbar healthBar;
 
     // Start is called before the first frame update
     void Start()
@@ -18,6 +19,7 @@ public class Health : MonoBehaviour
     public void TakeDamage(int amount)
     {
         currentHealth -= amount; 
+        healthBar.SetHealth(currentHealth);
 
         if (currentHealth <= 0)
         {
